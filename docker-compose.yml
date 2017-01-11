@@ -1,7 +1,7 @@
 version: '2'
 services:
   php:
-    image:  php:7.1-apache
+    build:  ./docker/php
     ports:
       - '80:80'
     volumes:
