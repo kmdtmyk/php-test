@@ -21,4 +21,24 @@ class News extends CI_Controller{
     $data['news_item'] = $this->news_model->get_news($slug);
   }
 
+  public function create(){
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+
+    $data['title'] = 'Create a news item';
+
+    $this->form_validation->set_rules('title', 'Title', 'required');
+    $this->form_validation->set_rules('body', 'Body');
+
+    if($this->form_validation->run() === false){
+      $this->load->view('templates/header', $data);
+      $this->load->view('news/create', $data);
+      $this->load->view('templates/footer', $data);
+    }else{
+      $this->news_model->set_news();
+      $this->load->view('news/success');
+    }
+
+  }
+
 }

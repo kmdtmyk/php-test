@@ -11,3 +11,7 @@
   </p>
 
 <?php endforeach; ?>
+
+<a href='/news/create'>
+  create news
+</a>
